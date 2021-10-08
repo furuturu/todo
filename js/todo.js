@@ -11,7 +11,7 @@ function createTask(value) {
   checkBox.type = 'checkbox';
   task.classList.add('task');
   task.appendChild(checkBox);
-  checkBox.addEventListener('click', completeTask);
+  checkBox.addEventListener('click', changeTaskStatus);
   task.addEventListener("dblclick", () => {
     task.remove();
   });
@@ -31,13 +31,9 @@ function addTask() {
   }  
 }
 
-function completeTask(event) {
-  const target = event.target;
-  if (target.checked) {
-    target.parentElement.classList.add('success');
-  } else {
-    target.parentElement.classList.remove('success');  
-  }
+function changeTaskStatus(event) {
+  const {target} = event;
+  target.parentElement.classList.toggle('success');
 }
 
 function enterPressed() {
